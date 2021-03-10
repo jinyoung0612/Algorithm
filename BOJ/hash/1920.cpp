@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+void BinarySearch(int *arr, int start, int end, int num){
+    int mid;
+    while(end-start>=0){
+        mid=(start+end)/2;
+
+        if(arr[mid]==num){
+            cout<<1<<"\n";
+            return;
+        }
+        else if(arr[mid]>num){
+            end=mid-1;
+        }
+        else{
+            start=mid+1;
+        }
+    }
+    cout<<0<<"\n";
+    return;
+    }
+int main(void){
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    int N,M;
+    cin>>N;
+    int a[N];
+    for(int i=0; i<N; i++){
+        cin>>a[i];
+    }
+    sort(a,a+N);
+    cin>>M;
+    int num;
+    for(int i=0; i<M; i++){
+        cin>>num;
+        BinarySearch(a,0,N-1,num);
+    }
+    
+    return 0;
+}
