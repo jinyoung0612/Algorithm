@@ -9,7 +9,7 @@ using namespace std;
 #define MAX 202
 
 int a,b,c;
-bool visited[MAX][MAX];
+bool visited[MAX][MAX][MAX];
 vector<int> ans;
 
 struct water{
@@ -31,8 +31,8 @@ void bfs(){
             ans.push_back(cur.c);
         }
 
-        if(!visited[cur.a][cur.b]){
-            visited[cur.a][cur.b]=1;
+        if(!visited[cur.a][cur.b][cur.c]){
+            visited[cur.a][cur.b][cur.c]=1;
             water tmp;
 
             //a->b
