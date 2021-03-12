@@ -9,7 +9,8 @@ using namespace std;
 #define MAX 202
 
 int a,b,c;
-bool visited[MAX][MAX][MAX];
+//bool visited[MAX][MAX] 이렇게 해도 정답임 (a,b만 방문비교) 
+bool visited[MAX][MAX][MAX]; // 메모리 사용량 많아짐
 vector<int> ans;
 
 struct water{
