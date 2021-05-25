@@ -6,10 +6,14 @@
 using namespace std;
 
 #define MAX 1001
+int arr[MAX];
 int dp[MAX];
 int rdp[MAX];
-int arr[MAX];
+
 int main(void){
+    
+    ios::sync_with_stdio(false);
+    cin.tie(0);
 
     int n;
     cin>>n;
@@ -18,37 +22,29 @@ int main(void){
         cin>>arr[i];
     }
 
-    dp[0]=1;
-    rdp[n-1]=1;
-    
     for(int i=0; i<n; i++){
-        int temp=0;
+        dp[i]=1;
         for(int j=0; j<i; j++){
-            if(arr[i]>arr[j]){
-                temp=max(dp[j],temp);
+            if(arr[j]<arr[i]){
+                dp[i]=max(dp[i],dp[j]+1);
             }
-            dp[i]=temp+1;
         }
     }
 
-    for(int i=n-1; i!=0; i--){
-        int temp=0;
+    for(int i=n-1; i>=0; i--){
+        rdp[i]=1;
         for(int j=n-1; j>i; j--){
-            if(arr[i]>arr[j]){
-                temp=max(rdp[j],temp);
+            if(arr[j]<arr[i]){
+                rdp[i]=max(rdp[i],rdp[j]+1);
             }
-            rdp[i]=temp+1;
         }
     }
   
     int answer=0;
-
-    for(int i=0; i<n; i++){
-        answer=max(answer,dp[i]+rdp[i]-1);
-    }
-  
-    cout<<answer;
     
-
+    for(int i=0; i<n; i++){
+       answer=max(answer,dp[i]+rdp[i]-1);
+    }
+    cout<<answer;
     return 0;
-}
+} 
