@@ -1,16 +1,17 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
+#include <queue>
+#include <deque>
 using namespace std;
 
-#define MAX 10000001
+#define MAX 100001
+
+bool visited[MAX];
+
+
 
 int main(void){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-
     
- 
     return 0;
 }
